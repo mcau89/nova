@@ -31,7 +31,9 @@ jobs:
       - name: Compilar toolchain (solo la primera vez)
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          export PATH=$PATH:$PS3DEV/bin:$PS3DEV/ppu/bin:$PS3DEV/spu/binsudo mkdir -p $PS3DEV && sudo chown -R $USER $PS3DEV
+          export PATH=$PATH:$PS3DEV/bin:$PS3DEV/ppu/bin:$PS3DEV/spu/bin
+          sudo mkdir -p $PS3DEV
+          sudo chown -R $USER $PS3DEV
           git clone https://github.com/ps3dev/ps3toolchain.git /tmp/ps3toolchain
           cd /tmp/ps3toolchain && ./toolchain.sh
 
